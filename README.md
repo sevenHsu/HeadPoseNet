@@ -60,14 +60,14 @@
    - collect_score: dump degrees error on every image into a json file
    
 ## Experiment
-训练数据集：
+Training Dataset：
 
 |         | Blur(P) | gary(P) | amount | type     |
 |:--------|:--------|:--------|:-------|:---------|
 | 300W_LP | 0.05    | 0.85    | 126k   | color    |
 | DMS591  | 0.05    | 0       | 19K    | infrared |
 
-模型对比：评价指标（degrees mae/collect score(limit=10º)）
+Experiment expression: (degrees mae/collect score(limit=10º))
 
 |                 | pretrained | width_mult | input_size | Flops | Test on AFLW | Test on DMS |
 |:----------------|:-----------|:-----------|:-----------|:------|:-------------|:------------|
