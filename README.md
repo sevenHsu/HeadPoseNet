@@ -1,8 +1,8 @@
 # Description
    Estimate head pose with CNN,using backbone convolution network such 
-   as ResNet / MobileNet / ShuffleNet.Also try regress attention 
-   direction vector \[x,y,z] directly and regress the Expectation of 
-   classify softmax result.What's more,build soft label for classify.
+   as ResNet / MobileNet / ShuffleNet.Also try regress face orientation 
+   vector \[x,y,z] directly and regress the Expectation of 
+   classify softmax results. What's more,build soft label for classify.
    
 # Usage 
 
