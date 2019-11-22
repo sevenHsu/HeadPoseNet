@@ -1,4 +1,7 @@
 # -*- coding:utf-8 -*-
+"""
+    Implementation of Head Pose Estimation with mobileNetV2
+"""
 import torch.nn as nn
 
 
@@ -74,13 +77,12 @@ class MobileNetV2(nn.Module):
         # make it nn.Sequential
         self.features = nn.Sequential(*features)
 
-        # building classifier
-        self.fc_angle = nn.Sequential(
-            nn.Dropout(0.2),
-            nn.Linear(self.last_channel, num_classes),
-        )
-
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
+
+        # building classifier
+        self.fc_x = nn.Linear(self.last_channel, num_classes)
+        self.fc_y = nn.Linear(self.last_channel, num_classes)
+        self.fc_z = nn.Linear(self.last_channel, num_classes)
 
         # weight initialization
         for m in self.modules():
@@ -98,9 +100,7 @@ class MobileNetV2(nn.Module):
     def forward(self, x, phase='train'):
         x = self.features(x)
         x = self.avg_pool(x).view(x.size(0), -1)
-        x = self.fc_angle(x)
-        return x
-
-
-def build_model():
-    return MobileNetV2(num_classes=3)
+        x_v = self.fc_x(x)
+        y_v = self.fc_y(x)
+        z_v = self.fc_z(x)
+        return x_v, y_v, z_v

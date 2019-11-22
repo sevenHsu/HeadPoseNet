@@ -1,3 +1,7 @@
+# -*- coding:utf-8 -*-
+"""
+    rotation functions script
+"""
 import numpy as np
 from math import cos
 from math import sin
