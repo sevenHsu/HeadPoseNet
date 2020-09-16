@@ -1,8 +1,8 @@
 # Description
    Estimate head pose with CNN,using backbone convolution network such 
-   as ResNet / MobileNet / ShuffleNet.Also try regress face orientation 
-   vector \[x,y,z] directly and regress the Expectation of 
-   classify softmax results. What's more,build soft label for classify.
+   as ResNet / MobileNet / ShuffleNet.Also try regress attention 
+   direction vector \[x,y,z] directly and regress the Expectation of 
+   classify softmax result.What's more,build soft label for classify.
    
 # Usage 
 
@@ -60,14 +60,14 @@
    - collect_score: dump degrees error on every image into a json file
    
 ## Experiment
-Training Dataset：
+训练数据集：
 
 |         | Blur(P) | gary(P) | amount | type     |
 |:--------|:--------|:--------|:-------|:---------|
 | 300W_LP | 0.05    | 0.85    | 126k   | color    |
 | DMS591  | 0.05    | 0       | 19K    | infrared |
 
-Experiment expression: (degrees mae/collect score(limit=10º))
+模型对比：评价指标（degrees mae/collect score(limit=10º)）
 
 |                 | pretrained | width_mult | input_size | Flops | Test on AFLW | Test on DMS |
 |:----------------|:-----------|:-----------|:-----------|:------|:-------------|:------------|
@@ -77,3 +77,4 @@ Experiment expression: (degrees mae/collect score(limit=10º))
 | MobileNetV2     | No         | 0.5        | 128        | 28    | 9.3º/68%     | 7.7º/74%    |
 | SqueezeNet1_1   | Yes        |            | 128        | 87    | 6.3º/85%     | 5.6º/89%    |
 | shufflenet(1.0) | Yes        |            | 160        | 73    | 7.0º/81.62%  | 6.0º/85.9%  |
+
